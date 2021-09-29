@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-    res.render('index', { title: 'Upgrade to Member Status' });
+    res.render('upgradeMember', { title: 'Upgrade to Member Status' });
 });
 
 module.exports = router;

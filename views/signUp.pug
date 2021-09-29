@@ -2,8 +2,28 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{Sign Up}
   a(href='/') Home
   a(href='/login') Login
   a(href='/signUp') Sign-Up
   a(href='/upgradeMember') Upgrade Member Status
+  br
+  br
+  form(class="signUpForm" method='POST' action="/signUp" enctype="multipart/form-data")
+    div.form-group
+    label(for='name')
+    input(type='text', placeholder='Name' name='name' required)
+    div.form-group
+    label(for='username')
+    input(type='text', placeholder='Username' name='username' required)
+    div.form-group
+    label(for='email')
+    input(type='email', placeholder='Email' name='email' required)
+    div.form-group
+    label(for='password')
+    input(type='text', placeholder='Password' name='password' required)
+    div.form-group
+    div.form-group
+    label(for='confirmPassword')
+    input(type='text', placeholder='Confirm Password' name='confirmPassword' required)
+    div.form-group
+    button.add-item-button(type='submit') Submit

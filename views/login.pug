@@ -7,3 +7,20 @@ block content
   a(href='/login') Login
   a(href='/signUp') Sign-Up
   a(href='/upgradeMember') Upgrade Member Status
+  br
+  br
+  if user === true
+          p Welcome back!
+  else
+          form(class="loginForm" method='POST' action="/login" enctype="multipart/form-data")
+              div.form-group
+              label(for='username')
+              input(type='text', placeholder='Username' name='username' required)
+              div.form-group
+              label(for='password')
+              input(type='text', placeholder='Password' name='password' required)
+              div.form-group
+              label(for='confirmPassword')
+              input(type='text', placeholder='Confirm Password' name='confirmPassword' required)
+              div.form-group
+              button.add-item-button(type='submit') Submit
