@@ -1,9 +1,9 @@
 var express = require('express');
-var router = express.Router();
+var upgradeMemberRouter = express.Router();
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
+upgradeMemberRouter.get('/', function (req, res, next) {
     res.render('upgradeMember', { title: 'Upgrade to Member Status' });
 });
 
-module.exports = router;
+module.exports = upgradeMemberRouter;

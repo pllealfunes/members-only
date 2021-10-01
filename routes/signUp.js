@@ -19,7 +19,7 @@ userRouter.post("/", (req, res, next) => {
         password: req.body.password
     };
     let user = new User(newUser);
-    /*user.save()
+    user.save()
         .then(() => {
             res.redirect('/login');
         })
@@ -27,8 +27,8 @@ userRouter.post("/", (req, res, next) => {
             if (err) {
                 console.log(err);
             }
-        });*/
-    console.log(newUser);
+        });
+    console.log(req.body);
 });
 
 
