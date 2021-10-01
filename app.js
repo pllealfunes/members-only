@@ -16,7 +16,7 @@ var upgradeMemberRouter = require('./routes/upgradeMember');
 require('dotenv').config();
 var app = express();
 
-mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PWD}@members-Only.qd8jn.mongodb.net/Members-Only?retryWrites=true&w=majority`, {
+mongoose.connect(`${process.env.DB_URI}`, {
   useUnifiedTopology: true,
   useNewUrlParser: true
 })
