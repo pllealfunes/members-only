@@ -8,7 +8,7 @@ const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 var User = require('./models/userSchema');
-//const mongoose = require('mongoose');
+var bcrypt = require('bcryptjs');
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
@@ -45,9 +45,15 @@ passport.use(
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
       }
-      if (user.password !== password) {
-        return done(null, false, { message: "Incorrect password" });
-      }
+      bcrypt.compare(password, user.password, (err, res) => {
+        if (res) {
+          // passwords match! log user in
+          return done(null, user)
+        } else {
+          // passwords do not match!
+          return done(null, false, { message: "Incorrect password" })
+        }
+      })
       return done(null, user);
     });
   })
