@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+var User = require('./models/userSchema');
 //const mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
@@ -69,6 +70,11 @@ app.use(passport.session());
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
   next();
+});
+
+app.get("/log-out", (req, res) => {
+  req.logout();
+  res.redirect("/");
 });
 
 app.use('/', indexRouter);

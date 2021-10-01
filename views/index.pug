@@ -7,3 +7,6 @@ block content
   a(href='/login') Login
   a(href='/signUp') Sign-Up
   a(href='/upgradeMember') Upgrade Member Status
+  if user
+      p Welcome back!
+      a(href='/log-out') Log Out!
