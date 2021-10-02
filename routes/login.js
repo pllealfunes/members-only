@@ -8,9 +8,11 @@ loginRouter.get('/', function (req, res, next) {
   res.render('login', { title: 'Login' });
 });
 
-loginRouter.post('/', passport.authenticate('local', { failureRedirect: '/login' }), (req, res) => {
-  res.redirect('/');
-});
+loginRouter.post('/', passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/login"
+})
+);
 
 
 module.exports = loginRouter;
