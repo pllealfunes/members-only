@@ -38,7 +38,7 @@ userRouter.post("/", (req, res, next) => {
             if (userExists.length > 0) {
                 return res.render("signUp", { title: 'Sign Up', error: "User already exists" });
             } else {
-                bcrypt.hash("somePassword", 10, (err, hashedPassword) => {
+                bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
                     const newUser = {
                         name: req.body.name,
                         username: req.body.username,

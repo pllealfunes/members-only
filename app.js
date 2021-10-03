@@ -39,18 +39,22 @@ passport.use(
   new LocalStrategy((username, password, done) => {
     User.findOne({ username: username }, (err, user) => {
       if (err) {
-        return done(err);
+        console.log('error')
+        //return done(err);
       }
       if (!user) {
-        return done(null, false, { message: "Incorrect username" });
+        console.log('no user found')
+        return done(null, false, { msg: "Incorrect username" });
       }
       bcrypt.compare(password, user.password, (err, res) => {
         if (res) {
           // passwords match! log user in
+          console.log('login success')
           return done(null, user);
         } else {
           // passwords do not match!
-          return done(null, false, { message: "Incorrect password" });
+          console.log('failed to login')
+          return done(null, false, { msg: "Incorrect password" });
         }
       });
     });
