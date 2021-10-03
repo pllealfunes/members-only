@@ -35,8 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-passport.use('local',
+passport.use(
   new LocalStrategy((username, password, done) => {
     User.findOne({ username: username }, (err, user) => {
       if (err) {
@@ -48,13 +47,12 @@ passport.use('local',
       bcrypt.compare(password, user.password, (err, res) => {
         if (res) {
           // passwords match! log user in
-          return done(null, user)
+          return done(null, user);
         } else {
           // passwords do not match!
-          return done(null, false, { message: "Incorrect password" })
+          return done(null, false, { message: "Incorrect password" });
         }
-      })
-      return done(null, user);
+      });
     });
   })
 );
