@@ -2,8 +2,30 @@ extends layout
 
 block content
   h1= title
-
-  a(href='/') Home
-  a(href='/login') Login
-  a(href='/signUp') Sign-Up
+  if user
+    p Upgrade your status #{user.username}!
+    a(href='/') Home
+    a(href='/log-out') Log Out!
+    a(href='/upgradeMember') Upgrade Member Status
+    h2 Become a member
+    p As a member you will be able to view the names of authors.
+    form(class="memberForm" method='POST' action="/upgradeMember")
+    div.form-group
+    label(for='memberPasscode')
+    input(type='text', placeholder='Passcode' name='memberPasscode' required)
+    div.form-group
+    button.add-item-button(type='submit') Submit
+    h2 Become an Admin
+    p As an admin you will be able to delete and view deleted messages.
+    form(class="adminForm" method='POST' action="/upgradeMember")
+    div.form-group
+    label(for='adminPasscode')
+    input(type='text', placeholder='Passcode' name='adminPasscode' required)
+    div.form-group
+    button.add-item-button(type='submit') Submit
+  else
+    a(href='/') Home
+    a(href='/login') Login
+    a(href='/signUp') Sign-Up
+    p Login or Sign-up to upgrade your member status!
   

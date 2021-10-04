@@ -2,11 +2,14 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
-  a(href='/') Home
-  a(href='/login') Login
-  a(href='/signUp') Sign-Up
-  a(href='/upgradeMember') Upgrade Member Status
   if user
-      p Welcome back!
+      p Welcome back #{user.username}!
+      a(href='/') Home
       a(href='/log-out') Log Out!
+      a(href='/upgradeMember') Upgrade Member Status
+      a(href='/log-out') Log Out!
+  else
+      a(href='/') Home
+      a(href='/login') Login
+      a(href='/signUp') Sign-Up
+      a(href='/upgradeMember') Upgrade Member Status
