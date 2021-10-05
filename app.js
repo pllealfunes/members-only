@@ -14,6 +14,7 @@ var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
 var signUpRouter = require('./routes/signUp');
 var upgradeMemberRouter = require('./routes/upgradeMember');
+var newMessageRouter = require('./routes/newMessage');
 require('dotenv').config();
 var app = express();
 
@@ -89,6 +90,7 @@ app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/signUp', signUpRouter);
 app.use('/upgradeMember', upgradeMemberRouter);
+app.use('/newMessage', newMessageRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

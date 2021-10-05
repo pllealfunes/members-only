@@ -9,11 +9,27 @@ block content
           if user.admin
               p Admin
       a(href='/') Home
+      a(href='/newMessage') New Message
       a(href='/log-out') Log Out!
       a(href='/upgradeMember') Upgrade Member Status
-      a(href='/log-out') Log Out!
+       each message in messages
+      .message-container
+        h3.msgTopic=message.topic
+         hr
+        p.msgText=message.text
+        .details-container  
+          p.msgUser=`- ${message.user}`
+          p.msgDate=message.added
   else
       a(href='/') Home
       a(href='/login') Login
       a(href='/signUp') Sign-Up
       a(href='/upgradeMember') Upgrade Member Status
+       each message in messages
+      .message-container
+        h3.msgTopic=message.topic
+         hr
+        p.msgText=message.text
+        .details-container  
+          p.msgUser Anonymous
+          p.msgDate=message.added

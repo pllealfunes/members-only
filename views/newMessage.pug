@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  if user
+    a(href='/') Home
+    a(href='/upgradeMember') Upgrade Member Status
+    br
+    br
+    if msg
+        p= msg
+    form(class="msgForm" method='POST' action="/newMsg")
+                div.form-group
+                label(for='messageUser')
+                input(type='hidden', placeholder='Name' name=`${user.username}`)
+                div.form-group
+                label(for='messageTopic')
+                input(type='text', placeholder='Topic' name='messageTopic')
+                div.form-group
+                label(for='messageText')
+                textarea(placeholder='New Message' name='messageText')
+                button(type='submit') Submit
+ else
+    a(href='/') Home
+    a(href='/upgradeMember') Upgrade Member Status

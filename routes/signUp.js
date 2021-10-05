@@ -87,15 +87,6 @@ userRouter.post("/", [
         });
     }
 });
-//}
-//})
-/*.catch((err) => {
-    if (err) {
-        console.log(err);
-    }*/
-//});
-;
-
 
 
 module.exports = userRouter;

@@ -5,6 +5,7 @@ block content
   if user && !user.member && !user.admin
     p Upgrade your status #{user.username}!
     a(href='/') Home
+    a(href='/newMessage') New Message
     a(href='/log-out') Log Out!
     h2 Become a member
     p As a member you will be able to view the names of authors.
@@ -23,6 +24,7 @@ block content
   if user && user.member && !user.admin
     p Upgrade your status #{user.username}!
     a(href='/') Home
+    a(href='/newMessage') New Message
     a(href='/log-out') Log Out!
     h2 Become a member
     p As a member you will be able to view the names of authors.
@@ -37,6 +39,7 @@ block content
   if user && user.admin && !user.member
     p Upgrade your status #{user.username}!
     a(href='/') Home
+    a(href='/newMessage') New Message
     a(href='/log-out') Log Out!
     h2 Become a member
     p As a member you will be able to view the names of authors.
@@ -51,6 +54,7 @@ block content
   if user && user.admin && user.member
     p Upgrade your status #{user.username}!
     a(href='/') Home
+    a(href='/newMessage') New Message
     a(href='/log-out') Log Out!
     h2 Become a member
     p As a member you will be able to view the names of authors.
