@@ -4,6 +4,10 @@ block content
   h1= title
   if user
       p Welcome back #{user.username}!
+          if user.member
+              p Member
+          if user.admin
+              p Admin
       a(href='/') Home
       a(href='/log-out') Log Out!
       a(href='/upgradeMember') Upgrade Member Status
