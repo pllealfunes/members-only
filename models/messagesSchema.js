@@ -2,10 +2,15 @@ var mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 let messagesSchema = new Schema({
-    username: { type: String, required: true },
-    title: { type: String, required: true },
+    username: { type: String, minLength: 5, required: true },
+    title: { type: String, minLength: 5, required: true },
     message: { type: String, required: true },
-    timestamp: { type: Date }
+    createdAt: { type: Date }
+});
+
+messagesSchema.pre('save', function (next) {
+    this.createdAt = new Date();
+    next();
 });
 
 

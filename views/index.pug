@@ -12,24 +12,40 @@ block content
       a(href='/newMessage') New Message
       a(href='/log-out') Log Out!
       a(href='/upgradeMember') Upgrade Member Status
-       each message in messages
-      .message-container
-        h3.msgTopic=message.topic
-         hr
-        p.msgText=message.text
-        .details-container  
-          p.msgUser=`- ${message.user}`
-          p.msgDate=message.added
+      each message in newMsg
+        .message-container
+            h3.msgTopic=message.title
+            hr
+            p.msgText=message.message
+            .details-container  
+            p.msgUser=`- ${message.username}`
+            p.msgDate=message.createdAt
+      each message in messages
+        .message-container
+            h3.msgTopic=message.topic
+            hr
+            p.msgText=message.message
+            .details-container  
+            p.msgUser=`- ${message.username}`
+            p.msgDate=message.createdAt
   else
       a(href='/') Home
       a(href='/login') Login
       a(href='/signUp') Sign-Up
       a(href='/upgradeMember') Upgrade Member Status
-       each message in messages
-      .message-container
-        h3.msgTopic=message.topic
-         hr
-        p.msgText=message.text
-        .details-container  
-          p.msgUser Anonymous
-          p.msgDate=message.added
+      each message in newMsg
+        .message-container
+            h3.msgTopic=message.topic
+            hr
+            p.msgText=message.message
+            .details-container  
+            p.msgUser Anonymous
+            p.msgDate=message.createdAt
+      each message in messages
+        .message-container
+            h3.msgTopic=message.topic
+            hr
+            p.msgText=message.message
+            .details-container  
+            p.msgUser Anonymous
+            p.msgDate=message.createdAt
