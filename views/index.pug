@@ -25,7 +25,13 @@ block content
         p.msgText=message.message
         .details-container
         if user
-          p.msgUser=`- ${message.username}`
+          if user.member
+            p.msgUser=`- ${message.username}`
+          else
+            p.msgUser Anonymous
         else
-          p.msgUser Anonymous
+            p.msgUser Anonymous
         p.msgDate=message.timestamp
+        if user
+          if user.admin
+             a.delete-button(href='/delete/'+message._id) Delete Item

@@ -17,4 +17,16 @@ router.get('/', function (req, res, next) {
     });
 });
 
+router.get('/delete/:messageId', function (req, res, next) {
+  Message.deleteOne({
+    '_id': req.params.messageId
+  })
+    .then(() => {
+      res.redirect('/');
+    })
+    .catch((err) => {
+      if (err) console.log(err);
+    });
+});
+
 module.exports = router;
