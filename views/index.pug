@@ -3,49 +3,29 @@ extends layout
 block content
   h1= title
   if user
-      p Welcome back #{user.username}!
-          if user.member
-              p Member
-          if user.admin
-              p Admin
-      a(href='/') Home
-      a(href='/newMessage') New Message
-      a(href='/log-out') Log Out!
-      a(href='/upgradeMember') Upgrade Member Status
-      each message in newMsg
-        .message-container
-            h3.msgTopic=message.title
-            hr
-            p.msgText=message.message
-            .details-container  
-            p.msgUser=`- ${message.username}`
-            p.msgDate=message.createdAt
-      each message in messages
-        .message-container
-            h3.msgTopic=message.topic
-            hr
-            p.msgText=message.message
-            .details-container  
-            p.msgUser=`- ${message.username}`
-            p.msgDate=message.createdAt
+    p Welcome back #{user.username} to Members Only!
+    if user.member
+      p Member
+    if user.admin
+      p Admin
   else
-      a(href='/') Home
-      a(href='/login') Login
-      a(href='/signUp') Sign-Up
-      a(href='/upgradeMember') Upgrade Member Status
-      each message in newMsg
-        .message-container
-            h3.msgTopic=message.topic
-            hr
-            p.msgText=message.message
-            .details-container  
-            p.msgUser Anonymous
-            p.msgDate=message.createdAt
-      each message in messages
-        .message-container
-            h3.msgTopic=message.topic
-            hr
-            p.msgText=message.message
-            .details-container  
-            p.msgUser Anonymous
-            p.msgDate=message.createdAt
+    p Welcome to Members Only
+  a(href='/') Home
+  if user
+    a(href='/newMessage') New Message
+    a(href='/log-out') Log Out!
+  else
+    a(href='/login') Login
+  a(href='/upgradeMember') Upgrade Member Status
+  if newMsg
+    each message in newMsg
+      .message-container
+        h3.msgTopic=message.title
+        hr
+        p.msgText=message.message
+        .details-container
+        if user
+          p.msgUser=`- ${message.username}`
+        else
+          p.msgUser Anonymous
+        p.msgDate=message.timestamp

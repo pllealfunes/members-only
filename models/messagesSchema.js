@@ -1,16 +1,12 @@
 var mongoose = require("mongoose");
+var moment = require('moment');
 
 const Schema = mongoose.Schema;
 let messagesSchema = new Schema({
     username: { type: String, minLength: 5, required: true },
     title: { type: String, minLength: 5, required: true },
     message: { type: String, required: true },
-    createdAt: { type: Date }
-});
-
-messagesSchema.pre('save', function (next) {
-    this.createdAt = new Date();
-    next();
+    timestamp: { type: String, default: () => moment().format("MMMM Do YYYY, h:mm:ss a") }
 });
 
 

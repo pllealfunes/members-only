@@ -3,13 +3,13 @@ let messages = [
         title: "First Topic",
         message: "Hi there!",
         username: "Amando",
-        createdAt: new Date()
+        timestamp: new Date()
     },
     {
         title: "Second Topic",
         message: "Hello World!",
         username: "Charles",
-        createdAt: new Date()
+        timestamp: new Date()
     }
 ];
 
