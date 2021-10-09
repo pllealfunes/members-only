@@ -41,10 +41,10 @@ passport.use(
     User.findOne({ username: username }, (err, user) => {
       if (err) {
         console.log('error')
-        //return done(err);
+        return done(err);
       }
       if (!user) {
-        //console.log('no user found')
+        console.log('incorrect username')
         return done(null, false, { msg: "Incorrect username" });
       }
       bcrypt.compare(password, user.password, (err, res) => {
