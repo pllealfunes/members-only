@@ -1,7 +1,7 @@
 var express = require('express');
 var loginRouter = express.Router();
 const passport = require("passport");
-
+const session = require("express-session");
 
 /* GET users listing. */
 loginRouter.get('/', function (req, res, next) {
@@ -10,7 +10,7 @@ loginRouter.get('/', function (req, res, next) {
 
 loginRouter.post('/', passport.authenticate("local", {
   successRedirect: "/",
-  failureRedirect: "/login"
+  failureRedirect: "/login",
 })
 );
 

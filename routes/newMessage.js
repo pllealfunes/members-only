@@ -21,7 +21,7 @@ newMessageRouter.post('/', [
         }
         else {
             const newMessage = {
-                username: req.body.username,
+                username: res.locals.currentUser._id,
                 title: req.body.title,
                 message: req.body.message
             };
