@@ -3,21 +3,24 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const mongoose = require('mongoose');
-const session = require("express-session");
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
+var mongoose = require('mongoose');
+var session = require("express-session");
+var passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
 var User = require('./models/userSchema');
 var bcrypt = require('bcryptjs');
+var flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
 var signUpRouter = require('./routes/signUp');
-var upgradeMemberRouter = require('./routes/upgradeMember');
+var upgradeStatusRouter = require('./routes/upgradeStatus');
 var newMessageRouter = require('./routes/newMessage');
+
 require('dotenv').config();
 var app = express();
 
+//Mongoose connection
 mongoose.connect(`${process.env.DB_URI}`, {
   useUnifiedTopology: true,
   useNewUrlParser: true
@@ -36,11 +39,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Use passport and bcryptjs to search for user in database and log them in
 passport.use(
   new LocalStrategy((username, password, done) => {
     User.findOne({ username: username }, (err, user) => {
       if (err) {
-        console.log('error')
         return done(err);
       }
       if (!user) {
@@ -50,11 +53,9 @@ passport.use(
       bcrypt.compare(password, user.password, (err, res) => {
         if (res) {
           // passwords match! log user in
-          console.log('login success')
           return done(null, user);
         } else {
           // passwords do not match!
-          console.log('failed to login')
           return done(null, false, { message: "Incorrect password" });
         }
       });
@@ -62,17 +63,21 @@ passport.use(
   })
 );
 
-passport.serializeUser(function (user, done) {
+//Passport middleware
+passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
-passport.deserializeUser(function (id, done) {
+passport.deserializeUser((id, done) => {
   User.findById(id, function (err, user) {
     done(err, user);
   });
 });
 
+//Express session
 app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+
+//Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -86,10 +91,22 @@ app.get("/log-out", (req, res) => {
   res.redirect("/");
 });
 
+//Connect flash
+app.use(flash());
+
+//Global Vars
+app.use(function (req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
+
+//Routes
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/signUp', signUpRouter);
-app.use('/upgradeMember', upgradeMemberRouter);
+app.use('/upgradeStatus', upgradeStatusRouter);
 app.use('/newMessage', newMessageRouter);
 
 // catch 404 and forward to error handler

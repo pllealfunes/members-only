@@ -8,30 +8,12 @@ const LocalStrategy = require("passport-local").Strategy;
 var bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 
-/* GET users listing. */
+/* GET SignUp page */
 userRouter.get('/', function (req, res, next) {
     res.render('signUp', { title: 'Sign Up' });
 });
 
-/*userRouter.post("/", (req, res, next) => {
-    const newUser = {
-        name: req.body.name,
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
-    };
-    let user = new User(newUser);
-    user.save()
-        .then(() => {
-            res.redirect('/login');
-        })
-        .catch((err) => {
-            if (err) {
-                console.log(err);
-            }
-        });
-});*/
-
+/* Create a new user using express validate for the form abd bcyrpt to hash passwords */
 userRouter.post("/", [
     check('username', 'Userame must have more than 5 characters').not().bail().isEmpty().bail().isLength({ min: 5 }).bail(),
     check('name', 'Name must have more than 5 characters').not().bail().isEmpty().bail().isLength({ min: 5 }).bail(),
@@ -55,17 +37,9 @@ userRouter.post("/", [
         });
     }).bail()
 ], (req, res, next) => {
-    //User.find({ "username": req.body.username })
-    /*.then((user) => {
-        let userExists = user
-        if (userExists.length > 0) {
-            return res.render("signUp", { title: 'Sign Up', error: "User already exists" });
-        }*/
     const errors = validationResult(req);
-    //console.log(errors.array());
     if (!errors.isEmpty()) {
         res.render('signUp', { title: 'Sign Up', errors: errors.array() });
-        //console.log(errors.array());
     } else {
         bcrypt.hash(req.body.password.trim(), 10, (err, hashedPassword) => {
             const newUser = {

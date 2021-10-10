@@ -6,9 +6,18 @@ block content
   a(href='/') Home
   a(href='/login') Login
   a(href='/signUp') Sign-Up
-  a(href='/upgradeMember') Upgrade Member Status
+  a(href='/upgradeStatus') Upgrade Member Status
   br
   br
+  if locals.errors
+    each error in locals.errors
+      p=errors.msg
+  if success_msg
+    p=success_msg
+  if error
+    p=error_msg
+  if error
+    p=error
   form(class="loginForm" method='POST' action="/login")
     div.form-group
     label(for='username')

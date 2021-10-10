@@ -11,6 +11,7 @@ loginRouter.get('/', function (req, res, next) {
 loginRouter.post('/', passport.authenticate("local", {
   successRedirect: "/",
   failureRedirect: "/login",
+  failureFlash: true
 })
 );
 

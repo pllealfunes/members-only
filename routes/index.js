@@ -17,6 +17,7 @@ router.get('/', function (req, res, next) {
     });
 });
 
+/* Allow admins to delete messages */
 router.get('/delete/:messageId', function (req, res, next) {
   Message.deleteOne({
     '_id': req.params.messageId

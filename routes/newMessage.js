@@ -16,7 +16,6 @@ newMessageRouter.post('/', [
     (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            console.log(errors);
             res.render('newMessage', { title: 'New Message', user: req.user, errors: errors.array() });
         }
         else {
