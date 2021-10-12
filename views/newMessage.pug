@@ -1,20 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  a(href='/') Home
-  a(href='/upgradeStatus') Upgrade Member Status
-  br
-  br
-  if user
-    if (errors)
-      each error, index in errors
-        p=error.msg
-    form(class="msgForm" method='POST' action="/newMessage")
-      div.form-group
-      label(for='title')
-      input(type='text', placeholder='Topic' name='title')
-      div.form-group
-      label(for='message')
-      textarea(placeholder='New Message' name='message')
-      button(type='submit') Submit
+  div.msgContainer
+    h1.msgPageTitle= title
+    if user
+      if (errors)
+        each error, index in errors
+          p=error.msg
+      form(class="msgForm" method='POST' action="/newMessage")
+        div.form-group
+        label(for='title')
+        input(type='text', placeholder='Topic' name='title')
+        div.form-group
+        label(for='message')
+        textarea(placeholder='New Message' name='message')
+        button(type='submit') Submit

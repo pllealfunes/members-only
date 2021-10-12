@@ -1,29 +1,24 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  a(href='/') Home
-  a(href='/login') Login
-  a(href='/signUp') Sign-Up
-  a(href='/upgradeStatus') Upgrade Member Status
-  br
-  br
-  if locals.errors
-    each error in locals.errors
-      p=errors.msg
-  if success_msg
-    p=success_msg
-  if error
-    p=error_msg
-  if error
-    p=error
-  form(class="loginForm" method='POST' action="/login")
-    div.form-group
-    label(for='username')
-    input(type='text', placeholder='Username' name='username' required)
-    div.form-group
-    label(for='password')
-    input(type='text', placeholder='Password' name='password' required)
-    div.form-group
-    button.add-item-button(type='submit') Submit
+  div.loginContainer  
+    h1.loginTitle= title
+    div.errorsContainer 
+      if locals.errors
+        each error in locals.errors
+          p=errors.msg
+      if success_msg
+        p=success_msg
+      if error
+        p=error_msg
+      if error
+        p=error
+    form(class="loginForm" method='POST' action="/login")
+      div.form-group
+      label(for='username')
+      input(type='text', placeholder='Username' name='username' required)
+      div.form-group
+      label(for='password')
+      input(type='text', placeholder='Password' name='password' required)
+      div.form-group
+      button.add-item-button(type='submit') Submit

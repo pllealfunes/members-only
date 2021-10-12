@@ -1,37 +1,27 @@
 extends layout
-
 block content
-  h1= title
   if user
-    p Welcome back #{user.username} to Members Only!
+    p.userWelcomeMsg Welcome back #{user.username} to Members Only!
     if user.member
       p Member
     if user.admin
       p Admin
-  else
-    p Welcome to Members Only
-  a(href='/') Home
-  if user
-    a(href='/newMessage') New Message
-    a(href='/log-out') Log Out!
-  else
-    a(href='/login') Login
-  a(href='/upgradeStatus') Upgrade Member Status
   if newMsg
-    each message in newMsg
-      .message-container
-        h3.msgTopic=message.title
-        hr
-        p.msgText=message.message
-        .details-container
-        if user
-          if user.member
-            p.msgUser=`- ${message.username}`
-          else
-            p.msgUser Anonymous
-        else
-            p.msgUser Anonymous
-        p.msgDate=message.timestamp
-        if user
-          if user.admin
-             a.delete-button(href='/delete/'+message._id) Delete Item
+    .message
+      each message in newMsg
+        .message-container
+            h3.msgTopic=message.title
+            hr
+            p.msgText=message.message
+            .details-container
+              if user
+                if user.member
+                  p.msgUser=`- ${message.username}`
+                else
+                  p.msgUser - Anonymous
+              else
+                  p.msgUser - Anonymous
+              p.msgDate=message.timestamp
+              if user
+                if user.admin
+                  a.delete-button(href='/delete/'+message._id) Delete Item
