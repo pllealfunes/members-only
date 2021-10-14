@@ -68,6 +68,8 @@ block content
               button.remove-member-button(type='submit' name='removeMember') Remove Member Status
             form(class="adminForm" method='POST' action="/upgradeStatus/removeAdmin")
               button.remove-admin-button(type='submit' name='removeAdmin') Remove Admin Status
-  if !user
-    p Login or Sign-up to upgrade your member status!
+      if !user
+        div.unavailableUpgradeContainer
+          h1.statusPageTitle Upgrade Status
+          p.unavailableUpgrade Login or Sign-up to Upgrade your Status!
   

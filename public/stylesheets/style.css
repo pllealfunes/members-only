@@ -93,6 +93,13 @@ header{
 }
 
 /*Login & Message styles*/
+
+.msgNotUser{
+font-size: 1.5rem;
+text-align: center;
+color: black;
+}
+
 .loginContainer,.msgContainer{
   display: flex;
   justify-content: center;
@@ -181,6 +188,16 @@ color: red;
 }
 
 /*Upgrade Status styles*/
+
+.unavailableUpgrade{
+  font-size: 30px;
+  text-align: center;
+  line-height: 5rem;
+}
+
+.statusPageTitle{
+  text-align: center;
+}
 
 .centerWrapper{
   display: flex;
