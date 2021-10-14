@@ -1,49 +1,73 @@
 extends layout
 
 block content
-  if user
-    h2 Upgrade your status #{user.username}!
-    p.statusIntroMember As a member you will be able to view the names of authors.
-    p.statusIntroAdmin As an admin you will be able to delete messages.
-    if user && !user.member && !user.admin
-      form(class="memberForm" method='POST' action="/upgradeStatus/addMember")
-          div.form-group
-          label(for='memberPasscode')
-          input(type='text', placeholder='Passcode' name='memberPasscode' required)
-          div.form-group
-          button.add-item-button(type='submit') Submit
-      form(class="adminForm" method='POST' action="/upgradeStatus/addAdmin")
-          div.form-group
-          label(for='adminPasscode')
-          input(type='text', placeholder='Passcode' name='adminPasscode' required)
-          div.form-group
-          button.add-item-button(type='submit') Submit
-    if user && user.member && !user.admin
-      form(class="memberForm" method='POST' action="/upgradeStatus/removeMember")
-          button.add-item-button(type='submit' name='removeMember') Remove Member Status
-      form(class="adminForm" method='POST' action="/upgradeStatus/addAdmin")
-          div.form-group
-          label(for='adminPasscode')
-          input(type='text', placeholder='Passcode' name='adminPasscode' required)
-          div.form-group
-          button.add-item-button(type='submit') Submit
-    if user && user.admin && !user.member
-      form(class="memberForm" method='POST' action="/upgradeStatus/addMember")
-        div.form-group
-        label(for='memberPasscode')
-        input(type='text', placeholder='Passcode' name='memberPasscode' required)
-        div.form-group
-        button.add-item-button(type='submit') Submit
-      form(class="adminForm" method='POST' action="/upgradeStatus/removeAdmin")
-        button.add-item-button(type='submit' name='removeAdmin') Remove Admin Status
-    if user && user.admin && user.member
-      form(class="memberForm" method='POST' action="/upgradeStatus/removeMember")
-        button.add-item-button(type='submit' name='removeMember') Remove Member Status
-      form(class="adminForm" method='POST' action="/upgradeStatus/removeAdmin")
-        button.add-item-button(type='submit' name='removeAdmin') Remove Admin Status
+  div.centerWrapper
+    div.statusWrapper
+      div.statusContainer
+        if user
+          h2.statusPageTitle Upgrade your status #{user.username}!
+          if user && !user.member && !user.admin
+            h3 Become a Member
+            p.statusIntroMember As a member you will be able to view the names of authors.
+            div.errorsContainer 
+              if (errors)
+                each error, index in errors
+                  p=error.msg
+            form(class="memberForm" method='POST' action="/upgradeStatus/addMember")
+                div.form-group
+                label(for='memberPasscode')
+                input(type='text', placeholder='Passcode' name='memberPasscode' required)
+                div.form-group
+                button.add-member-button(type='submit') Submit
+            h3 Become an Admin
+            p.statusIntroAdmin As an admin you will be able to delete messages.
+            div.errorsContainer 
+              if (errors)
+                each error, index in errors
+                  p=error.msg
+            form(class="adminForm" method='POST' action="/upgradeStatus/addAdmin")
+                div.form-group
+                label(for='adminPasscode')
+                input(type='text', placeholder='Passcode' name='adminPasscode' required)
+                div.form-group
+                button.add-admin-button(type='submit') Submit
+          if user && user.member && !user.admin
+            h3 Remove Member Status
+            form(class="memberForm" method='POST' action="/upgradeStatus/removeMember")
+                button.remove-member-button(type='submit' name='removeMember') Remove Member Status
+            h3 Become an Admin
+            p.statusIntroAdmin As an admin you will be able to delete messages.
+            div.errorsContainer 
+              if (errors)
+                each error, index in errors
+                  p=error.msg    
+            form(class="adminForm" method='POST' action="/upgradeStatus/addAdmin")
+                div.form-group
+                label(for='adminPasscode')
+                input(type='text', placeholder='Passcode' name='adminPasscode' required)
+                div.form-group
+                button.add-admin-button(type='submit') Submit
+          if user && user.admin && !user.member
+            h3 Become a Member
+            p.statusIntroMember As a member you will be able to view the names of authors.
+            div.errorsContainer 
+              if (errors)
+                each error, index in errors
+                  p=error.msg
+            form(class="memberForm" method='POST' action="/upgradeStatus/addMember")
+              div.form-group
+              label(for='memberPasscode')
+              input(type='text', placeholder='Passcode' name='memberPasscode' required)
+              div.form-group
+              button.add-member-button(type='submit') Submit
+            h3 Remove Admin Status  
+            form(class="adminForm" method='POST' action="/upgradeStatus/removeAdmin")
+              button.remove-admin-button(type='submit' name='removeAdmin') Remove Admin Status
+          if user && user.admin && user.member
+            form(class="memberForm" method='POST' action="/upgradeStatus/removeMember")
+              button.remove-member-button(type='submit' name='removeMember') Remove Member Status
+            form(class="adminForm" method='POST' action="/upgradeStatus/removeAdmin")
+              button.remove-admin-button(type='submit' name='removeAdmin') Remove Admin Status
   if !user
-    a(href='/') Home
-    a(href='/login') Login
-    a(href='/signUp') Sign-Up
     p Login or Sign-up to upgrade your member status!
   

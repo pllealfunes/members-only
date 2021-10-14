@@ -1,14 +1,13 @@
 var express = require('express');
 var router = express.Router();
-const messages = require('../public/javascripts/messages');
 const Message = require('../models/messagesSchema');
 
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  Message.find({}).sort({ timestamp: -1 })
+  Message.find({}).sort({ timestamp: -1 }).populate("username")
     .then((message) => {
-      res.render('index', { title: 'Home', user: req.user, messages: messages.messages, newMsg: message });
+      res.render('index', { title: 'Home', user: req.user, newMsg: message });
     })
     .catch((err) => {
       if (err) {

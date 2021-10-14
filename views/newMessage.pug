@@ -3,10 +3,11 @@ extends layout
 block content
   div.msgContainer
     h1.msgPageTitle= title
-    if user
-      if (errors)
-        each error, index in errors
-          p=error.msg
+    div.errorsContainer
+      if user
+        if (errors)
+          each error, index in errors
+            p=error.msg
       form(class="msgForm" method='POST' action="/newMessage")
         div.form-group
         label(for='title')

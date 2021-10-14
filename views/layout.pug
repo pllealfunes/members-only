@@ -6,7 +6,7 @@ html
   body
     header
       .header-title
-        h1.header-site-title Members Only
+        a(href='/').header-site-title Members Only
       .header-nav
               if user
                 a(href='/') Home
@@ -15,4 +15,5 @@ html
                 a(href='/upgradeStatus') Upgrade Status
               else
                 a(href='/login') Login
+                a(href='/signUp') Sign Up
     block content

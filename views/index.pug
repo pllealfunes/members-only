@@ -1,11 +1,7 @@
 extends layout
 block content
   if user
-    p.userWelcomeMsg Welcome back #{user.username} to Members Only!
-    if user.member
-      p Member
-    if user.admin
-      p Admin
+    h3.userWelcomeMsg Welcome back #{user.username}!
   if newMsg
     .message
       each message in newMsg
@@ -16,7 +12,7 @@ block content
             .details-container
               if user
                 if user.member
-                  p.msgUser=`- ${message.username}`
+                  p.msgUser - #{message.username.username}
                 else
                   p.msgUser - Anonymous
               else
