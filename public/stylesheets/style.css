@@ -1,7 +1,9 @@
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #C880B7;
+  overflow-x: hidden; 
 }
 
 a {
@@ -255,3 +257,53 @@ font-size: 1rem;
 .remove-admin-button,.remove-member-button{
   background-color: red;
 }
+
+.hamburger-menu,.exit,.drop-down,.links-container,.exit.container{
+  display: none;
+}
+
+
+@media screen and (max-width: 815px) {
+.exit,.drop-down,.links-container,.exit.container{
+    display: none;
+  }
+
+  .hamburger-menu,.exit{
+    display: block;
+    font-size: 35px;
+    color: #FFFAFA;
+    margin-top: 5px;
+    margin-right: 1rem;
+  }
+
+  .drop-down{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    background-color: #9F6BA0;
+    border: 1px solid  #F5CCE8;
+    margin-top: 5rem;
+    display: none;
+  }
+
+  .links-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .exit{
+    display: none;
+    text-align: end;
+    margin-top: 5rem;
+  }
+  
+  .nav{
+    display: none;
+  }
+}  
+
+
