@@ -264,9 +264,6 @@ font-size: 1rem;
 
 
 @media screen and (max-width: 815px) {
-.exit,.drop-down,.links-container,.exit.container{
-    display: none;
-  }
 
   .hamburger-menu,.exit{
     display: block;
