@@ -8,6 +8,7 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1')
     script(src='https://kit.fontawesome.com/1707487087.js' rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='shortcut icon' href='data:image/x-icon;,' type='image/x-icon')
   body
     header
       .header-title
@@ -29,8 +30,15 @@ html
                       a(href='/log-out') Log Out
                       a(href='/upgradeStatus') Upgrade Status
                 else
-                  a(href='/login') Login
-                  a(href='/signUp') Sign Up
+                  .hamburger-menu.fas.fa-bars
+                  .nav
+                    a(href='/login') Login
+                    a(href='/signUp') Sign Up
+                  div.drop-down
+                    i.exit.fas.fa-times
+                    div.links-container
+                      a(href='/login') Login
+                      a(href='/signUp') Sign Up
     script(src='/javascripts/script.js')
     block content
 

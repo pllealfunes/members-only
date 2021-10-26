@@ -9,8 +9,9 @@ hamburgerMenu.addEventListener('click', function () {
     hamburgerMenu.style.display = 'none';
 });
 
+
 exit.addEventListener('click', function () {
     document.querySelector('.exit').style.display = 'none';
     document.querySelector('.drop-down').style.display = 'none';
     hamburgerMenu.style.display = 'block';
-});
+})

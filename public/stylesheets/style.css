@@ -258,14 +258,13 @@ font-size: 1rem;
   background-color: red;
 }
 
-.hamburger-menu,.exit,.drop-down,.links-container,.exit.container{
+.hamburger-menu,.drop-down,.links-container,.exit.container{
   display: none;
 }
 
 
 @media screen and (max-width: 815px) {
-
-  .hamburger-menu,.exit{
+  .hamburger-menu{
     display: block;
     font-size: 35px;
     color: #FFFAFA;
@@ -299,7 +298,10 @@ margin: .7rem;
   .exit{
     display: none;
     text-align: end;
-    margin-top: 7rem;
+    font-size: 35px;
+    color: #FFFAFA;
+    margin-top: 4rem;
+    margin-right: 1rem;
   }
   
   .nav{
