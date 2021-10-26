@@ -11,7 +11,7 @@ block content
             p.msgText=message.message
             .details-container
               if user
-                if user.member
+                if user.member || user.admin
                   p.msgUser - #{message.username.username}
                 else
                   p.msgUser - Anonymous

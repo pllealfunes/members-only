@@ -1,47 +1,13 @@
 # Members Only
-This project was created using Node, Express, Mongoose, and MongoDB Atlas. The purpose of the project is to practice applying authentication to a node app. The project idea comes from the Odin Project Node.js Curriculum. The description of the project is as follows "In this project you’ll be building an exclusive clubhouse where your members can write anonymous posts. Inside the clubhouse, members can see who the author of a post is, but outside they can only see the story and wonder who wrote it."
+This project was created using Node, Express, Mongoose, and MongoDB Atlas. The purpose of the project is to practice applying authentication to a node app. The project idea comes from the Odin Project Node.js Curriculum.
 
-## To Do
-* DB Models
-	* Full Name
-	* Usernames or use email
-	* Passwords
-	* Membership Status
+Anyone who comes to the site should be able to see a list of all messages, with the author’s name hidden. Users are able to sign-up and create messages, but ONLY users that are members are able to see the author of each message. Finally, a user who is an Admin is able to see everything and also has the ability to delete messages.
 
-* Users
-	* Create meassages
-	* Not membesr automatically
-	* Only see message & timestamp
-
-* Messages
-	* Title
-	* Timestamp
-	* Text
-
-* Sign-up Form
-	* Sanitize & Vlaidate form fields
-	* Secure Passwords with bcrypt
-	* confrimPawssword field & valaidte using using custom 	validator
-
-* Page to become a member
-	* Enter secret passcode correctly to upgrade memebership status
-	* Upgrade member status
-	* Members should see author
-
-* Logn-Form
-	* Use Passport
-	* If logged in show link to create new message
-	* Create create message form
-
-* Home
-	* Display all messages
-
-* Optional Field: Admin
-	* Add ability to become an Admin
-	* Show Admin status
-		* Passcode or checkbox in sign up form
-	* Able to delete messages & see delted messages
-		* admin == true
-
-## Final Product Goal
-By this point, anyone who comes to the site should be able to see a list of all messages, with the author’s name hidden. Users should be able to sign-up and create messages, but ONLY users that are members should be able to see the author of each message. Finally, you should have an Admin user that is able to see everything and also has the ability to delete messages.
+## Instructions
+* Add MongoDB Atlas uri to a .env file
+* To run the project go to http://localhost:3000/
+* Then in the terminal for the project do: npm run devstart
+* To populate the database using populated.js: node populateddb < your mongo db url >
+	* https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
+* To become a Member the passcode is: 'cheetos'
+* To become an Admin the passcode is: 'doritos'
