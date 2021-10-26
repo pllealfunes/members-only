@@ -263,6 +263,33 @@ font-size: 1rem;
 }
 
 
+.error-title,.error-message,.error-instructions{
+  font-size: 150px;
+  text-align: center;
+}
+
+.error-message{
+  font-size: 50px;
+  text-align: center;
+  color: #fff;
+  margin-top: -4rem;
+}
+
+.error-instructions{
+  font-size: 30px;
+  text-align: center;
+  color: #fff;
+}
+
+.magnify-glass{
+  font-size: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+
 @media screen and (max-width: 815px) {
   .hamburger-menu{
     display: block;
