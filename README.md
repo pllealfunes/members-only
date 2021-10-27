@@ -1,5 +1,5 @@
 # Members Only
-This project was created using Node, Express, Mongoose, and MongoDB Atlas. The purpose of the project is to practice applying authentication to a node app. The project idea comes from the Odin Project Node.js Curriculum.
+This project was created using Node, Express, Mongoose, MongoDB Atlas, Passport.js, Bycrypt.js, and Moment. The purpose of the project is to practice applying authentication to a node app. The project idea comes from the Odin Project Node.js Curriculum.
 
 Anyone who comes to the site should be able to see a list of all messages, with the author’s name hidden. Users are able to sign-up and create messages, but ONLY users that are members are able to see the author of each message. Finally, a user who is an Admin is able to see everything and also has the ability to delete messages.
 
@@ -7,7 +7,5 @@ Anyone who comes to the site should be able to see a list of all messages, with 
 * Add MongoDB Atlas uri to a .env file
 * To run the project go to http://localhost:3000/
 * Then in the terminal for the project do: npm run devstart
-* To populate the database using populated.js: node populateddb < your mongo db url >
-	* https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
 * To become a Member the passcode is: 'cheetos'
 * To become an Admin the passcode is: 'doritos'
