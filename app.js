@@ -109,6 +109,8 @@ app.use('/signUp', signUpRouter);
 app.use('/upgradeStatus', upgradeStatusRouter);
 app.use('/newMessage', newMessageRouter);
 
+app.listen(process.env.PORT || 3000);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
