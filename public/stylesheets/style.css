@@ -48,12 +48,20 @@ header{
 }
 
 /*Home styles*/
+.home-intro{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+margin-top: 5rem;
+}
+
 .message{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 5rem;
+  margin-top: 4rem;
 }
 
 .message-container{
@@ -291,6 +299,10 @@ font-size: 1rem;
 
 
 @media screen and (max-width: 815px) {
+  .home-intro{
+  text-align:center;
+  }
+
   .hamburger-menu{
     display: block;
     font-size: 35px;
